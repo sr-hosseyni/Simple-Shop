@@ -1,0 +1,37 @@
+<ul class="categories-tree">
+    <li *ngFor="let category of categories" class="child-category">
+
+        <a>
+            <i class="fa indicator"
+                (click)="isChildCollapsed[category.id] = !isChildrenCollapsed(category.id)"
+                [attr.aria-expanded]="!isChildrenCollapsed(category.id)"
+                attr.aria-controls="cats-tree-children-{{category.id}}"
+                [ngClass]="isChildrenCollapsed(category.id) ? 'fa-plus-square' : 'fa-minus-square'"
+            ></i>
+        </a>
+
+        <app-category
+            [category]="category"
+            (onRemove)="onChildRemove($event)"
+        ></app-category>
+
+            <app-categories-tree
+                [categories]="category.children"
+                [parentCategoryId]="category.id"
+                attr.id="cats-tree-children-{{category.id}}"
+                [ngbCollapse]="isChildrenCollapsed(category.id)"
+        ></app-categories-tree>
+
+    </li>
+    <li class="add-new-category">
+        <a *ngIf='!newChildCategory' (click)="addChildCategory()">
+            <i class="fa fa-plus text-success"></i>
+        </a>
+        <app-new-category
+            *ngIf='newChildCategory'
+            [parentId]="parentCategoryId"
+            (onCancel)="cancelAddingChildCategory($event)"
+            (onSuccess)="successAddingChildCategory($event)">
+        </app-new-category>
+    </li>
+</ul>
