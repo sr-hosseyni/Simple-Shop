@@ -1,0 +1,28 @@
+version: '2'
+services:
+    api:
+        image: shincoder/homestead:php7.0
+        restart: always
+        ports:
+            - "80:80" # web
+        links:
+            - mariadb
+        container_name: bcs_web
+        volumes:
+            - ./:/bcs
+        env_file: ./.env
+        hostname: bcs-web
+#        command: bash -c "/serve.sh bms.dev /bms/public"
+
+    mariadb:
+        image: tutum/mariadb
+        restart: always
+        ports:
+            - "33060:3306"
+#        environment:
+#            MARIADB_USER: root # cannot be changed ( for info. only )
+#            MARIADB_PASS: secret
+        container_name: bcs_db
+        hostname: bcs-db
+
+

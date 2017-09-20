@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker exec -t bcs_web bash -c "cd /bcs && php artisan $*"
