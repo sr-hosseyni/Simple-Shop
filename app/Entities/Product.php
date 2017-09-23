@@ -29,15 +29,22 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\BCS\Entities\ProductAttribute[] $attributes
  * @method \Illuminate\Database\Eloquent\Builder|\BCS\Entities\Product whereDesc($value)
  * @method \Illuminate\Database\Eloquent\Builder|\BCS\Entities\Product whereTitle($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\BCS\Entities\ProductAttributeOpt[] $attributesDtm
+ * @property-read \Illuminate\Database\Eloquent\Collection|\BCS\Entities\ProductAttributeOpt[] $attributesInt
+ * @property-read \Illuminate\Database\Eloquent\Collection|\BCS\Entities\ProductAttributeOpt[] $attributesOpt
+ * @property-read \Illuminate\Database\Eloquent\Collection|\BCS\Entities\ProductAttributeOpt[] $attributesStr
+ * @property-read \Illuminate\Database\Eloquent\Collection|\BCS\Entities\ProductAttributeOpt[] $attributesTxt
  */
 class Product extends Model
 {
+    protected $table = 'product';
+    public $timestamps = false;
+
     const STATUS_AVAILABE = 'available';
     const STATUS_NOT_AVAILABE = 'not_available';
     const STATUS_COOMING_SOON = 'comming_soon';
 
     /**
-     *
      * @var string[]
      */
     public static $availableStatus = [
@@ -45,9 +52,6 @@ class Product extends Model
         self::STATUS_COOMING_SOON,
         self::STATUS_NOT_AVAILABE
     ];
-
-    protected $table = 'product';
-    public $timestamps = false;
 
     protected $fillable = [
         'model',
@@ -66,8 +70,43 @@ class Product extends Model
         return $this->belongsTo('BCS\Entities\Category');
     }
 
-    public function attributes()
+    public function attributesStr()
     {
-        return $this->hasMany('BCS\Entities\ProductAttribute', 'product_id', 'id');
+        return $this->hasMany('BCS\Entities\ProductAttributeOpt');
+    }
+
+    public function attributesInt()
+    {
+        return $this->hasMany('BCS\Entities\ProductAttributeOpt');
+    }
+
+    public function attributesDtm()
+    {
+        return $this->hasMany('BCS\Entities\ProductAttributeOpt');
+    }
+
+    public function attributesOpt()
+    {
+        return $this->hasMany('BCS\Entities\ProductAttributeOpt');
+    }
+
+    public function attributesTxt()
+    {
+        return $this->hasMany('BCS\Entities\ProductAttributeOpt');
+    }
+
+    public function __get($name)
+    {
+        if ($name == 'attributes') {
+            return array_merge(
+                $this->attributesStr->toArray(),
+                $this->attributesInt->toArray(),
+                $this->attributesDtm->toArray(),
+                $this->attributesOpt->toArray(),
+                $this->attributesTxt->toArray()
+            );
+        }
+
+        return parent::__get($name);
     }
 }

@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method \Illuminate\Database\Eloquent\Builder|\BCS\Entities\ProductAttributeInt whereId($value)
  * @method \Illuminate\Database\Eloquent\Builder|\BCS\Entities\ProductAttributeInt whereProductId($value)
  * @method \Illuminate\Database\Eloquent\Builder|\BCS\Entities\ProductAttributeInt whereValue($value)
+ * @property-read \BCS\Entities\CategoryAttribute $attribute
  */
 class ProductAttribute extends Model
 {

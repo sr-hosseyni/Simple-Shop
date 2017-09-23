@@ -25,6 +25,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method Builder|CategoryAttribute whereType($value)
  * @property string|null $desc
  * @method static \Illuminate\Database\Eloquent\Builder|\BCS\Entities\CategoryAttribute whereDesc($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\BCS\Entities\ProductAttributeOpt[] $productAttributesDtm
+ * @property-read \Illuminate\Database\Eloquent\Collection|\BCS\Entities\ProductAttributeOpt[] $productAttributesInt
+ * @property-read \Illuminate\Database\Eloquent\Collection|\BCS\Entities\ProductAttributeOpt[] $productAttributesOpt
+ * @property-read \Illuminate\Database\Eloquent\Collection|\BCS\Entities\ProductAttributeOpt[] $productAttributesStr
+ * @property-read \Illuminate\Database\Eloquent\Collection|\BCS\Entities\ProductAttributeOpt[] $productAttributesTxt
  */
 class CategoryAttribute extends Model
 {
@@ -67,23 +72,23 @@ class CategoryAttribute extends Model
         return $this->hasMany('BCS\Entities\AttributeOption', 'attribute_id', 'id');
     }
 
-    public function productAttributeStr()
+    public function productAttributesStr()
     {
         return $this->hasMany('BCS\Entities\ProductAttributeOpt');
     }
-    public function productAttributeInt()
+    public function productAttributesInt()
     {
         return $this->hasMany('BCS\Entities\ProductAttributeOpt');
     }
-    public function productAttributeDtm()
+    public function productAttributesDtm()
     {
         return $this->hasMany('BCS\Entities\ProductAttributeOpt');
     }
-    public function productAttributeOpt()
+    public function productAttributesOpt()
     {
         return $this->hasMany('BCS\Entities\ProductAttributeOpt');
     }
-    public function productAttributeTxt()
+    public function productAttributesTxt()
     {
         return $this->hasMany('BCS\Entities\ProductAttributeOpt');
     }

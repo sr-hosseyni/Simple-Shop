@@ -9,9 +9,8 @@
     cd bcs
     composer install
     npm install
+    ./start.sh
     cd backend
     npm install
-    cd ..
-    run ./start.sh
-    run npm start
+    npm start
 ```
