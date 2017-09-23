@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="jumbotron text-center">
+        <h1>
+            <img class="logo" src="assets/angular-logo.svg" alt="angular logo"/>
+            <span>Bamilo Test Case</span>
+            <p>This is admin dashboard</p>
+            <p>(I am using a tiny angular project starter)</p>
+        </h1>
+        <app-loader [isLoading]="isLoading"></app-loader>
+        <q [hidden]="isLoading">{{quote}}</q>
+    </div>
+</div>

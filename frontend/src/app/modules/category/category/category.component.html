@@ -1,0 +1,15 @@
+<div class="category-show" *ngIf="!editMode">
+    {{category.title}} ({{category.desc}})
+    <a id="" class="icon-btn text-primary" (click)="edit()">
+        <i class="fa fa-pencil"></i>
+    </a>
+    <a id="" class="icon-btn text-danger" (click)="remove()">
+        <i class="fa fa-trash"></i>
+    </a>
+</div>
+<div class="category-edit form-inline" *ngIf="editMode">
+    <input class="form-control form-control-sm" placeholder="TITLE" [(ngModel)]="editingCategory.title" />&nbsp;
+    <input class="form-control form-control-sm" placeholder="DESCRIPTION" [(ngModel)]="editingCategory.desc" />&nbsp;
+    <button class="btn btn-sm btn-outline-success" (click)="update()">save</button>&nbsp;
+    <button class="btn btn-sm btn-outline-danger" (click)="cancelEdit()">cancel</button>
+</div>

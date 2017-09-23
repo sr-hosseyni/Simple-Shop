@@ -1,0 +1,18 @@
+ul.categories-dropdown {
+    margin:0;
+    padding:0;
+    list-style:none;
+
+    x {
+        background: brown;
+    }
+}
+
+ul.categories-dropdown.child {
+    padding-left: 1em;
+}
+
+div.scrollable-menu {
+    max-height: 200px;
+    overflow-y: auto;
+}

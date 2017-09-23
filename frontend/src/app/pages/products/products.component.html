@@ -1,0 +1,11 @@
+<div class="container">
+    <app-categories-list
+        [currentCategory]="category"
+        (onSelectCategory)="onCategoryChange($event)"
+        [categories]="categories">
+    </app-categories-list>
+
+    <app-products-grid
+        [category]="category">
+    </app-products-grid>
+</div>
