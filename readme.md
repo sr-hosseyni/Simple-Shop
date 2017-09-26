@@ -1,7 +1,7 @@
 # requirements:
-    node
-    npm
-    docker (docker-compose needed)
++    node
++    npm
++    docker (docker-compose needed)
 
 # run
 ```
