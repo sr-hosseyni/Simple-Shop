@@ -32,8 +32,6 @@ export class AdvanceSearchComponent implements OnInit {
             requestOptionsArg = this.productSearchService.productsInCategories(this.selectedCatgeories);
         }
 
-        console.log(requestOptionsArg);
-
         this.productService.all(requestOptionsArg).
             subscribe(
                 products => this.changeResults(products),

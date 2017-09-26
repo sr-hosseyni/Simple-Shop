@@ -1,10 +1,18 @@
-<ul>
+<span class="badge badge-default">Attributes</span>
+<ul class="list-inline">
     <li *ngFor="let category of categories">
         {{category.title}}
-        <ul>
-<!--            <li *ngFor="let attr of criteriaProducts[category.id].attributes">
-                <input [(ngModel)]="attr.title" />
-            </li>-->
+        <ul *ngIf="getCriteria(category)" class="list-group">
+            <li *ngFor="let attr of getCriteria(category).attributes" class="list-group-item">
+                <div class="row">
+                    <div class="col-auto">
+                        <label for="">{{attr.attribute.title}}</label>
+                    </div>
+                    <div class="col-auto">
+                        <input class="form-control form-control-sm" [(ngModel)]="attr.value" />
+                    </div>
+                </div>
+            </li>
         </ul>
     </li>
 </ul>

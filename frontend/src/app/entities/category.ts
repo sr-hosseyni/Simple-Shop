@@ -21,19 +21,4 @@ export class Category {
             parent_id: this.parent_id,
         };
     }
-
-//    assign(category: {}): Category {
-//        console.log(category);
-//        Object.assign(this, category);
-//        console.log(this.attributes);
-//        let attrs: Attribute[] = [];
-//        for (let attribute in this.attributes) {
-//            let attrObj = new Attribute();
-//            attrs.push(attrObj.assign(attribute));
-//        }
-//
-//        this.attributes = attrs;
-//
-//        return this;
-//    }
 }

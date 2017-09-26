@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
 
 import {Category} from '../../../entities/category';
+import {Product} from '../../../entities/product';
 import {ProductAttribute} from '../../../entities/product-attribute';
 import {Attribute} from '../../../entities/attribute';
 
@@ -11,20 +12,48 @@ import {Attribute} from '../../../entities/attribute';
 })
 export class AttributesComponent implements OnInit, OnChanges {
     @Input() private categories: Category[];
-    criteriaAttributes: ProductAttribute[][];
+    criterias: Product[];
     constructor() {}
 
     ngOnInit() {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        console.log(changes);
-        if (changes['categories']) {
-            for (let category of this.categories) {
-                /**
-                 * @todo update criteriaAttributes
-                 */
+//        if (changes['categories']) {
+            this.refreshCriterias();
+//        }
+    }
+
+    refreshCriterias() {
+        let criterias: Product[] = [];
+        for (let category of this.categories) {
+            console.log('shir');
+            let product: Product = this.getCriteria(category);
+
+            if (!product) {
+                console.log('kiir');
+                product = new Product();
+                product.category_id = category.id;
+
+                for (let attr of category.attributes) {
+                    product.attributes.push(new ProductAttribute(product, attr))
+                }
+            }
+
+            criterias.push(product);
+        }
+        console.log(this.categories);
+        this.criterias = criterias;
+        console.log(this.criterias);
+    }
+
+    getCriteria(category: Category) {
+        for (let product of this.criterias) {
+            if (product.category_id == category.id) {
+                return product;
             }
         }
+
+        return null;
     }
 }

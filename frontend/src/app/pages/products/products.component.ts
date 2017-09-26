@@ -7,7 +7,7 @@ import {Product} from '../../entities/product';
 @Component({
     selector: 'app-products',
     templateUrl: './products.component.html',
-    styleUrls: ['./products.component.css'],
+    styleUrls: ['./products.component.scss'],
     providers: []
 })
 export class ProductsComponent implements OnInit {

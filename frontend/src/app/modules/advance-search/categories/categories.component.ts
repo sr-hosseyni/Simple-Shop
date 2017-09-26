@@ -33,12 +33,18 @@ export class CategoriesComponent implements OnInit {
                 return cat.id != category.id;
             });
         } else {
-            this.selectedCategories.push(category);
+            this.categoryService.get(category.id).
+                subscribe(
+                    cat => this.updateSelectedCategories(cat),
+                    error => this.errorMessage = <any> error
+                );
         }
-        this.onChangeSelectedCategories.emit(this.selectedCategories);
     }
 
-
+    updateSelectedCategories(category: Category) {
+        this.selectedCategories.push(category)
+        this.onChangeSelectedCategories.emit(this.selectedCategories)
+    }
 
     isCategorySelected(category: Category) {
         for (let sCategory of this.selectedCategories) {

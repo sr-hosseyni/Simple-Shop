@@ -21,7 +21,7 @@ export class CategoryService {
             .catch(this.handleError);
     }
 
-    get(id: number): Observable<Category[]> {
+    get(id: number): Observable<Category> {
         return this.http.get('/category/' + id)
             .map(this.extractData)
             .catch(this.handleError);
