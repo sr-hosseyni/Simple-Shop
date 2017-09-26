@@ -27,11 +27,9 @@ export class AttributesComponent implements OnInit, OnChanges {
     refreshCriterias() {
         let criterias: Product[] = [];
         for (let category of this.categories) {
-            console.log('shir');
             let product: Product = this.getCriteria(category);
 
             if (!product) {
-                console.log('kiir');
                 product = new Product();
                 product.category_id = category.id;
 
@@ -42,9 +40,7 @@ export class AttributesComponent implements OnInit, OnChanges {
 
             criterias.push(product);
         }
-        console.log(this.categories);
         this.criterias = criterias;
-        console.log(this.criterias);
     }
 
     getCriteria(category: Category) {

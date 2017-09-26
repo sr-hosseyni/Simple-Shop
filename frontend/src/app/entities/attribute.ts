@@ -26,17 +26,4 @@ export class Attribute {
     getOptionsString() {
         this.options.join();
     }
-
-//    assign(attribute: {}): Attribute {
-//        Object.assign(this, attribute);
-//        console.log(this.options);
-//        let ops: Option[] = [];
-//        for (let option in this.options) {
-//            let optionObj = new Option();
-//            ops.push(optionObj.assign(option));
-//        }
-//        this.options = ops;
-//
-//        return this;
-//    }
 }
