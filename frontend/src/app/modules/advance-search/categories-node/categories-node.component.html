@@ -1,0 +1,16 @@
+<ul>
+    <li *ngFor="let category of categories">
+        <input
+            type="checkbox"
+            [checked]="isCategorySelected(category)"
+            (change)="changeCategorySelectionStatus(category)"
+        />
+        {{category.title}}
+        <app-search-categories-node
+            [categories]="category.children"
+            (onChangeCategorySelectionStatus)="changeCategorySelectionStatus($event)"
+            (onCheckingIsCategorySelected)="isCategorySelected($event)">
+
+        </app-search-categories-node>
+    </li>
+</ul>

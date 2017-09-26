@@ -1,0 +1,6 @@
+<app-search-categories
+    (onChangeSelectedCategories)="refreshResults($event)">
+</app-search-categories>
+<app-search-attributes
+    [categories]="selectedCatgeories">
+</app-search-attributes>

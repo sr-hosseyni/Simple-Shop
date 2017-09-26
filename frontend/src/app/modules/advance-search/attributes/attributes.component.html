@@ -1,0 +1,10 @@
+<ul>
+    <li *ngFor="let category of categories">
+        {{category.title}}
+        <ul>
+<!--            <li *ngFor="let attr of criteriaProducts[category.id].attributes">
+                <input [(ngModel)]="attr.title" />
+            </li>-->
+        </ul>
+    </li>
+</ul>
