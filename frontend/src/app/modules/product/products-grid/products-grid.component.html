@@ -1,112 +1,14 @@
-<div *ngIf="category">
-    <div class="container-fluid">
-        <table class="table table-striped table-responsive">
-            <thead class="thead-inverse">
-                <tr>
-                    <th colspan="9" class="title">The Attributes Of The {{category.title}} Category</th>
-                </tr>
-                <tr>
-                    <th>#</th>
-                    <th>title</th>
-                    <th>model</th>
-                    <th>attributes</th>
-                    <th>image url</th>
-                    <th>description</th>
-                    <th>price</th>
-                    <th>status</th>
-                    <th>quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let product of products">
-                    <td>{{product.id}}</td>
-                    <td>{{product.title}}</td>
-                    <td>{{product.model}}</td>
-                    <td>...</td>
-                    <td>{{product.imgUrl}}</td>
-                    <td>{{product.desc}}</td>
-                    <td>{{product.price}}</td>
-                    <td>{{product.status}}</td>
-                    <td>{{product.quantity}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="col-6">
-        <div class="form " action="">
-
-            <div class="form-group">
-                <input class="form-control form-control-sm"
-                       placeholder="TITLE"
-                       [(ngModel)]="newProduct.title" />
-            </div>
-
-            <div class="form-group">
-                <input class="form-control form-control-sm"
-                       placeholder="MODEL"
-                       [(ngModel)]="newProduct.model" />
-            </div>
-
-
-<!--            <div class="form-group" *ngfor="let attr of newProduct.attributes">
-                <input class="form-control form-control-sm"
-                       placeholder="MODEL"
-                       [(ngModel)]="attr" />
-            </div>-->
-
-
-            <div class="form-group">
-                <input class="form-control form-control-sm"
-                       placeholder="IMAGE URL"
-                       [(ngModel)]="newProduct.imgUrl" />
-            </div>
-
-            <div class="form-group">
-                <input class="form-control form-control-sm"
-                       placeholder="DESCRIPTION"
-                       [(ngModel)]="newProduct.desc" />
-            </div>
-
-            <div class="form-group">
-                <input class="form-control form-control-sm"
-                       placeholder="PRICE"
-                       [(ngModel)]="newProduct.price" />
-            </div>
-
-            <div class="form-group">
-                <select class="form-control form-control-sm"
-                        [(ngModel)]="newProduct.status">
-                    <option selected="" [selected] [value]="'available'">Available</option>
-                    <option [value]="'not_available'">Not Available</option>
-                    <option [value]="'comming_soon'">Comming Soon</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <input class="form-control form-control-sm"
-                       placeholder="QUANTITY"
-                       [(ngModel)]="newProduct.quantity" />
-            </div>
-
-            <div class="form-group">
-                <input
-                    placeholder="comma separated options"
-                    *ngIf="newProduct.type == 'opt'"
-                    [(ngModel)]="newProduct.optionsStr" />
-            </div>
-
-            <div class="form-group">
-                <button class="btn btn-sm btn-outline-success" (click)="save()">save</button>
-                <button class="btn btn-sm btn-outline-danger" (click)="cancel()">cancel</button>
+<div class="container">
+    <div class="card-columns">
+        <div *ngFor="let product of products">
+            <div class="card">
+                <img class="card-img-top img-fluid" src="{{ product.imgUrl }}" alt="{{ product.title }} - {{ product.model }}">
+                <div class="card-block">
+                    <h4 class="card-title">{{ product.title }}</h4>
+                    <p class="card-text">{{ product.model }}</p>
+                    <a href="#" class="btn btn-primary">BUY</a>
+                </div>
             </div>
         </div>
     </div>
-
-    <p *ngIf="errorMessage">
-        <ngb-alert [dismissible]="false">
-            <strong>Error!</strong> {{errorMessage}}
-        </ngb-alert>
-    </p>
-
 </div>

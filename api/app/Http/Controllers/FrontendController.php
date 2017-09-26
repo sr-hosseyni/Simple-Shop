@@ -2,14 +2,10 @@
 
 namespace BCS\Http\Controllers;
 
-use BCS\Entities\Category;
-use BCS\Entities\CategoryAttribute;
-use BCS\Entities\Product;
 use BCS\Entities\Repositories\AttributeRepository;
 use BCS\Entities\Repositories\CategoryRepository;
 use BCS\Entities\Repositories\Criteria\Category\MainCategories;
 use BCS\Entities\Repositories\ProductRepository;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use View;
 

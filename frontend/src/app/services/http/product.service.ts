@@ -1,10 +1,12 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Inject} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Headers, RequestOptions, RequestOptionsArgs, URLSearchParams} from '@angular/http';
 
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+
+import {HttpService} from '../../core/http/http.service';
 
 import {Product} from '../../entities/product';
 import {Category} from '../../entities/category';
@@ -16,24 +18,8 @@ export class ProductService {
     constructor(private http: Http) {
     }
 
-    all(category: any): Observable<Product[]> {
-
-//        let params = {
-//            "filter_groups": [
-//                {
-//                    "filters": [
-//                        {
-//                            "key": "category_id",
-//                            "value": category.id,
-//                            "operator": "eq"
-//                        }
-//                    ]
-//                }
-//            ]
-//        };
-//        let options = new RequestOptions({params: params});
-
-        return this.http.get('/product?' + 'filter_groups[0][filters][0][key]=category_id&filter_groups[0][filters][0][value]=' + category.id + '&filter_groups[0][filters][0][operator]=eq')
+    all(options?: RequestOptionsArgs): Observable<Product[]> {
+        return this.http.get('/product', options)
             .map(this.extractData)
             .catch(this.handleError);
     }

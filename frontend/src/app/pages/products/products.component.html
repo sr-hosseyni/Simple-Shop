@@ -1,11 +1,13 @@
-<div class="container">
-    <app-categories-list
-        [currentCategory]="category"
-        (onSelectCategory)="onCategoryChange($event)"
-        [categories]="categories">
-    </app-categories-list>
-
-    <app-products-grid
-        [category]="category">
-    </app-products-grid>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <app-advance-search (onChangeResults)="setProducts($event)">
+            </app-advance-search>
+        </div>
+        <div class="col-9">
+            <app-products-grid
+                [products]="products">
+            </app-products-grid>
+        </div>
+    </div>
 </div>

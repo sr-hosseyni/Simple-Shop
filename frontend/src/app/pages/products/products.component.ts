@@ -1,38 +1,26 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
+import {HttpService} from '../../core/http/http.service';
 import {CategoryService} from '../../services/http/category.service';
-import {Category} from '../../entities/category';
+import {Product} from '../../entities/product';
 
 @Component({
-    selector: 'app-attributes',
+    selector: 'app-products',
     templateUrl: './products.component.html',
     styleUrls: ['./products.component.css'],
-    providers: [
-        CategoryService
-    ]
+    providers: []
 })
 export class ProductsComponent implements OnInit {
     mode = 'Observable';
-    private errorMessage: string;
-    private categories: Category[] = [];
-    private category: Category = null;
+    private products: Product[] = [];
 
 
-    constructor(private categoryService: CategoryService) {}
+    constructor() {}
 
     ngOnInit() {
-        this.getCategoriesList();
     }
 
-    getCategoriesList() {
-        this.categoryService.all().
-            subscribe(
-            categories => this.categories = categories,
-            error => this.errorMessage = <any> error
-        );
-    }
-
-    onCategoryChange(category: Category) {
-        this.category = Object.assign(new Category(), category);
+    setProducts(products: Product[]) {
+        this.products = products;
     }
 }

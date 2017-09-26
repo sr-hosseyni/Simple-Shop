@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Controller extends BaseController
 {
+
     use AuthorizesRequests,
         DispatchesJobs,
         ValidatesRequests;
@@ -31,21 +32,18 @@ class Controller extends BaseController
         }
 
         return response()->json([
-            $key => $data
+                $key => $data
         ]);
     }
 
     protected function apiResponseError($message = 'Bad request', $status_code = 400)
     {
-        return response()->json([
+        return response()->json(
+            [
                 'message' => $message,
                 'status_code' => $status_code
-                ], $status_code);
-//        return response()->json([
-//            'error' => [
-//                'message' => $message,
-//                'status' => $status_code
-//            ]],
-//            $status_code);
+            ],
+            $status_code
+        );
     }
 }

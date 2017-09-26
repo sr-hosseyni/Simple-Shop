@@ -15,10 +15,4 @@ class ProductRepository extends Repository
     {
         return new Product();
     }
-
-    public function filterIsTitle($x)
-    {
-        return $x % 2 == 0;
-    }
-
 }

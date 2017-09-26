@@ -29,8 +29,6 @@ class ProductController extends Controller
     {
         $resourceOptions = $this->parseResourceOptions();
 
-//        var_dump($resourceOptions);die;
-
         $data = $this->productRepository->get($resourceOptions);
         $parsedData = $this->parseData($data, $resourceOptions, 'products');
 

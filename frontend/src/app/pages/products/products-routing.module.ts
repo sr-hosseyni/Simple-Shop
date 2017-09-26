@@ -6,7 +6,7 @@ import {Route} from '../../core/route.service';
 import {ProductsComponent} from './products.component';
 
 const routes: Routes = Route.withShell([
-    {path: 'products', component: ProductsComponent, data: {title: 'Products'}}
+    {path: 'all-products', component: ProductsComponent, data: {title: 'Products'}}
 ]);
 
 @NgModule({
