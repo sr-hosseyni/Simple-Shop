@@ -70,8 +70,6 @@ class CategoryController extends Controller
     {
         $transformer = new CategoryTransformer(CategoryTransformer::TRANSFORM_WITH_ATTRIBUTES);
 
-//        var_dump($category->attributes[0]->options);
-//        die;
         /**
          * @todo options must retrieve in one query
          * Its handling separated for each attribute now
