@@ -14,6 +14,7 @@ done;
 
 docker exec bcs_db bash -c "/usr/bin/mysqld_safe & sleep 5; mysql -u root -e \"CREATE USER 'bcs'@'%' IDENTIFIED BY 'secret'; CREATE DATABASE bcs; GRANT ALL PRIVILEGES ON bcs.* TO 'bcs'@'%';\""
 docker exec bcs_web bash -c "/serve.sh bcs.dev /bcs/public"
+docker exec bcs_web bash -c "sleep 5"
 docker exec bcs_web bash -c "cd /bcs && php artisan migrate"
 docker exec bcs_web bash -c "cd /bcs && php artisan db:seed"
 
